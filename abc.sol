@@ -1,18 +1,24 @@
-mapping(address => bool) public isAdmin;
-address public ownerAddress;
+//SPDX-License-Identifier:UNLICENSED
+pragma solidity ^0.6.0;
 
-modifier adminOnly{
-    require(abc.isAdmin[msg.sender]);
-    _;
-}
+contract abc{
+    mapping(address => bool) public isAdmin;
+    address public ownerAddress;
 
-modifier ownerOnly{
-    require(msg.sender==abc.ownerAddress);
-    _;
-}
+    modifier adminOnly{
+        require(abc.isAdmin[msg.sender]);
+        _;
+    }
 
-function setOwner(address _owner) public { // call in constructor
-    isAdmin[msg.sender]=true;
-    ownerAddress=_owner;
-    isAdmin[abc.ownerAddress]=true;
+    modifier ownerOnly{
+        require(msg.sender==abc.ownerAddress);
+        _;
+    }
+
+    function setOwner(address _owner) public { // call in constructor
+        isAdmin[msg.sender]=true;
+        ownerAddress=_owner;
+        isAdmin[abc.ownerAddress]=true;
+    }
+
 }
