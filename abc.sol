@@ -6,7 +6,7 @@ contract abc{
     address public ownerAddress;
 
     modifier adminOnly{
-        require(abc.isAdmin[msg.sender]);;
+        require(abc.isAdmin[msg.sender]); yo
         _;
     }
 
